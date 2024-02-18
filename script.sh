@@ -12,8 +12,9 @@ SUBTITLE_FILE=$2        # Alt yazı dosyası yolu
 START_INDEX=$3          # Başlangıç indeksi
 END_INDEX=${4:-$START_INDEX}  # Bitiş indeksi, opsiyonel (varsayılan olarak başlangıç indeksi ile aynı)
 
-# Video dosyası adından temel isim oluşturuluyor
-BASE_NAME=$(basename "$VIDEO_FILE" .mkv)
+# Video dosyası adından temel isim ve uzantı oluşturuluyor (uzantıdan bağımsız)
+BASE_NAME=$(basename "$VIDEO_FILE" | sed 's/\.[^.]*$//')
+EXTENSION="${VIDEO_FILE##*.}"
 
 # Çıktı dizini oluşturuluyor
 OUTPUT_DIR="${BASE_NAME}"
@@ -27,7 +28,7 @@ else
 fi
 
 # Alt yazı dosyası işleniyor
-awk -v start_index="$START_INDEX" -v end_index="$END_INDEX" -v video_file="$VIDEO_FILE" -v output_name="$OUTPUT_NAME" -v output_dir="$OUTPUT_DIR" '
+awk -v start_index="$START_INDEX" -v end_index="$END_INDEX" -v video_file="$VIDEO_FILE" -v output_name="$OUTPUT_NAME" -v output_dir="$OUTPUT_DIR" -v extension="$EXTENSION" '
 BEGIN {
     RS = "";            # Kayıt ayırıcı boş satır
     FS = "\n";          # Alan ayırıcı yeni satır
@@ -80,7 +81,7 @@ END {
     if (start_time != "" && end_time != "") {
         gsub(",", ".", start_time);
         gsub(",", ".", end_time);
-        output_video = sprintf("%s/%s.mkv", output_dir, output_name);
+        output_video = sprintf("%s/%s.%s", output_dir, output_name, extension);  # Dinamik uzantı kullanılıyor
         # ffmpeg ile video kesme işlemi
         cmd_video = sprintf("ffmpeg -i \"%s\" -ss %s -to %s -c:v libx264 -c:a copy \"%s\" -y", video_file, start_time, end_time, output_video);
         system(cmd_video);
