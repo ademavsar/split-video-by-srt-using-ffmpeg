@@ -1,47 +1,49 @@
-# Video ve Alt Yazı İşleme Betiği
+# video ve alt yazı i̇şleme betiği
 
-Bu betik, belirli bir alt yazı indeks aralığına göre video dosyalarını kesmek ve ilgili alt yazıları bu kesimlere uygun şekilde düzenlemek için kullanılır.
+bu betik, belirli bir alt yazı indeks aralığına göre video dosyalarını kesmek ve ilgili alt yazıları bu kesimlere uygun şekilde düzenlemek için kullanılır.
+
+bu betiği [moyi](https://github.com/ademavsar/moyi) için deste hazırlamak amacıyla oluşturdum.
 
 ## test
 ![test gif](test.gif)
 
-## Özellikler
+## özellikler
 
-- Birden fazla video formatını destekler (MKV, MP4, AVI vb.).
-- Belirtilen alt yazı indeks aralığına göre videoyu keser.
-- Kesilen video bölümleri için alt yazıları uygun şekilde düzenler.
+- birden fazla video formatını destekler (mkv, mp4, avi vb.).
+- belirtilen alt yazı indeks aralığına göre videoyu keser.
+- kesilen video bölümleri için alt yazıları uygun şekilde düzenler.
 
-## Kullanım
+## kullanım
 
-Betiği kullanmak için aşağıdaki komutu terminalde çalıştırın:
+betiği kullanmak için aşağıdaki komutu terminalde çalıştırın:
 
 ```bash
 ./script.sh <video dosyası> <alt yazı dosyası> <başlangıç indeksi> [bitiş indeksi]
 ```
 
-- `<video dosyası>`: İşlenecek video dosyasının yolu.
-- `<alt yazı dosyası>`: Alt yazı dosyasının yolu.
-- `<başlangıç indeksi>`: Alt yazılarda işlem yapılacak başlangıç indeksi.
-- `[bitiş indeksi]`: Opsiyonel, alt yazılarda işlem yapılacak bitiş indeksi. Belirtilmezse, başlangıç indeksi ile aynı kabul edilir.
+- `<video dosyası>`: i̇şlenecek video dosyasının yolu.
+- `<alt yazı dosyası>`: alt yazı dosyasının yolu.
+- `<başlangıç indeksi>`: alt yazılarda işlem yapılacak başlangıç indeksi.
+- `[bitiş indeksi]`: opsiyonel, alt yazılarda işlem yapılacak bitiş indeksi. belirtilmezse, başlangıç indeksi ile aynı kabul edilir.
 
-## Örnek Kullanım
+## örnek kullanım
 
 ```bash
 ./script.sh example.mp4 subtitles.srt 5 10
 ```
 
-Bu komut, `example.mp4` video dosyasını ve `subtitles.srt` alt yazı dosyasını kullanarak, 5. ile 10. alt yazı indeksleri arasındaki bölümü keser ve bu kesime ait alt yazıları düzenler.
+bu komut, `example.mp4` video dosyasını ve `subtitles.srt` alt yazı dosyasını kullanarak, 5. ile 10. alt yazı indeksleri arasındaki bölümü keser ve bu kesime ait alt yazıları düzenler.
 
-## Gereklilikler
+## gereklilikler
 
-- `ffmpeg`: Video işleme için gereklidir. Sisteminizde `ffmpeg` kurulu olmalıdır.
+- `ffmpeg`: video işleme için gereklidir. sisteminizde `ffmpeg` kurulu olmalıdır.
 
-### Güncelleme Notları
+### güncelleme notları
 
-- Video dosyası adı ve uzantısı işlemede iyileştirmeler yapıldı; artık betik, `.mkv` dahil olmak üzere farklı uzantılara sahip video dosyalarını destekliyor.
-- Çıktı video dosyasının uzantısı, orijinal video dosyasının uzantısına dinamik olarak uyum sağlayacak şekilde güncellendi.
-- Betik, genel kullanım kolaylığı ve esnekliği artıracak şekilde yeniden düzenlendi.
+- video dosyası adı ve uzantısı işlemede iyileştirmeler yapıldı; artık betik, `.mkv` dahil olmak üzere farklı uzantılara sahip video dosyalarını destekliyor.
+- çıktı video dosyasının uzantısı, orijinal video dosyasının uzantısına dinamik olarak uyum sağlayacak şekilde güncellendi.
+- betik, genel kullanım kolaylığı ve esnekliği artıracak şekilde yeniden düzenlendi.
 
-## Lisans
+## lisans
 
-Bu proje MIT Lisansı ile lisanslanmıştır. Daha fazla bilgi için `LICENSE` dosyasına bakın.
+bu proje mit lisansı ile lisanslanmıştır. daha fazla bilgi için `license` dosyasına bakın.
