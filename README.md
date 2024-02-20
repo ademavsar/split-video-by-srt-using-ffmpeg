@@ -12,6 +12,7 @@ bu betiği [moyi](https://github.com/ademavsar/moyi) için deste hazırlamak ama
 - birden fazla video formatını destekler (mkv, mp4, avi vb.).
 - belirtilen alt yazı indeks aralığına göre videoyu keser.
 - kesilen video bölümleri için alt yazıları uygun şekilde düzenler.
+- birden fazla segmenti tek bir komutla işleyebilme yeteneği.
 
 ## kullanım
 
@@ -26,13 +27,19 @@ betiği kullanmak için aşağıdaki komutu terminalde çalıştırın:
 - `<başlangıç indeksi>`: alt yazılarda işlem yapılacak başlangıç indeksi.
 - `[bitiş indeksi]`: opsiyonel, alt yazılarda işlem yapılacak bitiş indeksi. belirtilmezse, başlangıç indeksi ile aynı kabul edilir.
 
-## örnek kullanım
+## 3 farklı kullanım şekli
 
 ```bash
-./script.sh example.mp4 subtitles.srt 5 10
+./script.sh example.mp4 subtitles.srt 5
 ```
 
-bu komut, `example.mp4` video dosyasını ve `subtitles.srt` alt yazı dosyasını kullanarak, 5. ile 10. alt yazı indeksleri arasındaki bölümü keser ve bu kesime ait alt yazıları düzenler.
+```bash
+./script.sh example.mp4 subtitles.srt 5 9
+```
+
+```bash
+./script.sh example.mp4 subtitles.srt 5, 5 9
+```
 
 ## gereklilikler
 
@@ -40,10 +47,6 @@ bu komut, `example.mp4` video dosyasını ve `subtitles.srt` alt yazı dosyasın
 
 ### güncelleme notları
 
-- video dosyası adı ve uzantısı işlemede iyileştirmeler yapıldı; artık betik, `.mkv` dahil olmak üzere farklı uzantılara sahip video dosyalarını destekliyor.
+- video dosyası adı ve uzantısı işlemede iyileştirmeler yapıldı; artık betik, .mkv dahil olmak üzere farklı uzantılara sahip video dosyalarını destekliyor.
 - çıktı video dosyasının uzantısı, orijinal video dosyasının uzantısına dinamik olarak uyum sağlayacak şekilde güncellendi.
-- betik, genel kullanım kolaylığı ve esnekliği artıracak şekilde yeniden düzenlendi.
-
-## lisans
-
-bu proje mit lisansı ile lisanslanmıştır. daha fazla bilgi için `license` dosyasına bakın.
+- betik, genel kullanım kolaylığı ve esnekliği artıracak şekilde yeniden düzenlendi. artık birden fazla segmenti tek bir komutla işleyebilir.
